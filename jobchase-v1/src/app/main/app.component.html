@@ -1,0 +1,108 @@
+<mat-toolbar color="primary" class="app-root-header">
+  <mat-toolbar-row>
+    <span>{{pageTitle}}</span>
+    <span class="app-root-toolbar-spacer"></span>
+    <!-- <button mat-icon-button routerLink="/dashboard" class="app-root-toolbar-button">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/workspace" class="app-root-toolbar-button">
+      <mat-icon>view_agenda</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/browse" class="app-root-toolbar-button">
+      <mat-icon>view_list</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/favorites" class="app-root-toolbar-button">
+      <mat-icon>bookmark_outline</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/search" class="app-root-toolbar-button">
+      <mat-icon>search</mat-icon>
+    </button> -->
+
+    <button mat-icon-button class="app-root-toolbar-button" matTooltip="Dashboard" [matTooltipPosition]="headerMenuTooltipPosition" (click)="routeHandler('/dashboard')">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <button mat-icon-button class="app-root-toolbar-button" matTooltip="Workspace" [matTooltipPosition]="headerMenuTooltipPosition" (click)="routeHandler('/workspace')">
+      <mat-icon>view_agenda</mat-icon>
+    </button>
+    <button mat-icon-button class="app-root-toolbar-button" matTooltip="Browse" [matTooltipPosition]="headerMenuTooltipPosition" (click)="routeHandler('/browse')">
+      <mat-icon>view_list</mat-icon>
+    </button>
+    <button mat-icon-button class="app-root-toolbar-button" matTooltip="Favorites" [matTooltipPosition]="headerMenuTooltipPosition" (click)="routeHandler('/favorites')">
+      <mat-icon>bookmark_outline</mat-icon>
+    </button>
+    <button mat-icon-button class="app-root-toolbar-button" matTooltip="Search" [matTooltipPosition]="headerMenuTooltipPosition" (click)="routeHandler('/search')">
+      <mat-icon>search</mat-icon>
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<a id="add-fab" mat-mini-fab color="warn" class="app-root-fab-button" matTooltip="Add Posting" [matTooltipPosition]="fabMenuTooltipPosition" (click)="handleClickAddJob()">
+  <mat-icon>add</mat-icon>
+</a>
+
+
+<router-outlet></router-outlet>
+
+
+
+<mat-toolbar color="accent" class="app-root-footer">
+  <mat-toolbar-row>
+    <!-- <span>{{copyright}}</span> -->
+    <span [innerHtml]="copyright"></span>
+    <span class="app-root-toolbar-spacer"></span>
+
+    <!-- <button mat-icon-button matTooltip="Help" [matTooltipPosition]="footerMenuTooltipPosition" (click)="handleContextHelp()">
+      <mat-icon>help_circle_outline</mat-icon>
+    </button> -->
+
+    <button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Themes" [matTooltipPosition]="footerMenuTooltipPosition">
+      <mat-icon>palette</mat-icon>
+    </button>
+    <mat-menu #themeMenu="matMenu">
+      <button mat-menu-item [disabled]="hasSavedTheme" (click)="handleSaveCurrentTheme()">
+        <mat-icon>invert_colors</mat-icon>
+        <span>Use Current Theme</span>
+      </button>
+      <button mat-menu-item *ngIf="hasSavedTheme" (click)="handleUseRandomTheme()">
+        <mat-icon>wallpaper</mat-icon>
+        <span>Use Random Themes</span>
+      </button>
+      <button mat-menu-item *ngIf="!hasSavedTheme" (click)="handleTryDifferentThemes()">
+        <mat-icon>wallpaper</mat-icon>
+        <span>Try Different Theme</span>
+      </button>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="footerMenu" matTooltip="Extra Menus" [matTooltipPosition]="footerMenuTooltipPosition">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #footerMenu="matMenu">
+      <button *ngIf="!isUserLoggedIn" mat-menu-item (click)="handleUserLogin()">
+        <mat-icon>verified_user</mat-icon>
+        <span>Login</span>
+      </button>
+      <button *ngIf="isUserLoggedIn" mat-menu-item (click)="handleUserLogout()">
+        <mat-icon>verified_user</mat-icon>
+        <span>Logout</span>
+      </button>
+      <!-- <button mat-menu-item (click)="handleShareJob()">
+        <mat-icon>share</mat-icon>
+        <span>Share</span>
+      </button> -->
+      <button mat-menu-item (click)="handleUserProfile()">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="handleUserSettings()">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <!-- <button mat-menu-item disabled>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button> -->
+    </mat-menu>
+
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,36 @@
+.app-root-header {
+  /* position: fixed; */
+  z-index: 2;
+  font-size: 1.2em;
+  min-height: 64px;
+  max-height: 64px;
+}
+.app-root-toolbar-button {
+  padding: 0 14px;
+}
+
+/* .app-root-toolbar-icon {
+  padding: 0 14px;
+} */
+
+.app-root-toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.app-root-fab-button {
+  z-index: 3;
+}
+
+#add-fab {
+  /* position: fixed; */
+  position: absolute;
+  top: 64px;
+  right: 32px;
+}
+
+.app-root-footer {
+  font-size: 0.9em;
+  min-height: 48px;
+  max-height: 48px;
+}
+
